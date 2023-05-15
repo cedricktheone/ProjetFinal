@@ -215,5 +215,17 @@ class Garage():
         stream.close()
         #retourner le resultat
         return reponse
-    def ajout_vouture(self,element:Voiture)->None:
-        pass
+    def ajouter_voiture(self,element:Voiture)->None:
+        for auto in self.__voitures:
+            if auto is None:
+                self.__voitures.append(element)
+            else:
+                raise ValueError("L'auto existe deja")
+
+
+    def get_voiture(self,numvoiture:str)->Voiture:
+        for element in self.__voitures:
+            if element.get_numeroplaque()==numvoiture:
+                return element
+        return None
+
