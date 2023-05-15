@@ -1,29 +1,29 @@
 from datetime import datetime
-
+import jsonpickle
 class Personne:
     def __init__(self,nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
         self.set_nom(nom)
         self.set_prenom(prenom)
 
     def get_nom(self):
-        return self.__nom
+        return self._nom
 
     def set_nom(self,value):
         if value[0].isupper() and 6 < len(value) < 20:
-            self.__nom = value
+            self._nom = value
         else:
             raise ValueError("la valeur doit commencer par une majuscule et avoir entre 6 et 20 charactères")
     def get_prenom(self):
-        return self.__prenom
+        return self._prenom
 
     def set_prenom(self,value):
         if value[0].isupper() and 6 < len(value) < 20:
-            self.__prenom = value
+            self._prenom = value
         else:
             raise ValueError("la valeur doit commencer par une majuscule et avoir entre 6 et 20 charactères")
 
     def __str__(self):
-        return f"son nom:{self.__nom},son prenom:{self.__prenom}"
+        return f"son nom:{self._nom},son prenom:{self._prenom}"
 
 class Employe(Personne):
     def __init__(self,code:int=0,fonction:str="",nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
@@ -104,13 +104,14 @@ class Reparation:
 
 
 class Voiture():
-    def __init__(self,numeroplaque:str="A1AA1A",marque:str="",modele:str="",couleur:str="",annee:int=0,proprietaire:Client=Client()):
+    def __init__(self,numeroplaque:str="A1AA1A",marque:str="",modele:str="",couleur:str="",annee:int=0,proprietaire:Client=Client(),reparations:list[Reparation]=[]):
         self.set_numeroplaque(numeroplaque)
         self.set_marque(marque)
         self.set_modele(modele)
         self.set_couleur(couleur)
         self.set_annee(annee)
         self.set_proprietaire(proprietaire)
+        self.set_reparations(reparations)
 
     def get_numeroplaque(self):
         return self.__numeroplaque
@@ -142,5 +143,48 @@ class Voiture():
     def set_proprietaire(self,value):
         self.__proprietaire = value
 
+    def get_reparation(self):
+        return self.__reparations
+    def set_reparations(self,value):
+        self.__reparations= value
+
     def __str__(self):
         return f"information sur la voiture:{self.__numeroplaque}\n{self.__modele}{self.__modele}\n{self.__couleur}\n{self.__proprietaire}{self.__annee}"
+
+
+class Garage():
+    def __init__(self,nom:str="",adresse:str="",telephone:str="",employes:list[Employe]=[],voitures:list[Voiture]=[]):
+        self.set_nom(nom)
+        self.set_adresse(adresse)
+        self.set_telephone(telephone)
+        self.set_employes(employes)
+        self.set_voitures(voitures)
+
+    def get_nom(self):
+        return self.__nom
+    def set_nom(self,value):
+            self.__nom = value
+
+    def get_adresse(self):
+        return self.__adresse
+    def set_adresse(self,value):
+        self.__adresse = value
+
+    def get_telephone(self):
+        return self.__telephone
+
+    def set_telephone(self,value):
+            self.__telephone = value
+
+    def get_employes(self):
+        return self.__employes
+    def set_employes(self,value:list[Employe]):
+        self.__employes=value
+
+
+    def get_voitures(self):
+        return self.__voitures
+    def set_voitures(self,value:list[Voiture]):
+        self.__voitures = value
+
+
