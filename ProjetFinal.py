@@ -26,7 +26,7 @@ class Personne:
         return f"son nom:{self.__nom},son prenom:{self.__prenom}"
 
 class Employe(Personne):
-    def __init__(self,code:int=0,fonction:str="",,nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
+    def __init__(self,code:int=0,fonction:str="",nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
         self.set_code(code)
         self.set_fonction(fonction)
         super.__init__(nom,prenom)
@@ -42,6 +42,26 @@ class Employe(Personne):
         self.__fonction = value
     def __str__(self):
         return f"voici la fonction de{self.get_prenom()}{self.get_nom()}:code{self.__code}fonction:{self.__fonction}"
+
+class Client(Personne):
+    def __init__(self,telephone:str="111-111-1111",courriel:str="vide@pasdecourriel.com",nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
+        self.set_telephone(telephone)
+        self.set_courriel(courriel)
+        super.__init__(nom,prenom)
+    def get_telephone(self):
+        return self.__telephone
+
+    def set_telephone(self,value:str):
+        self.__telephone = value
+
+    def get_courriel(self):
+        return self.__courriel
+
+    def set_courriel(self,value:str):
+        self.__courriel = value
+    def __str__(self):
+        return f"voici les informations de{self.get_prenom()}{self.get_nom()}:code{self.__telephone}fonction:{self.__courriel}"
+
 
 class Reparation:
     def __init__(self,code:int=0,description:str="",montant:float=0.0,datereparation:datetime=datetime.now(),codeemploye:int=0):
@@ -75,7 +95,15 @@ class Reparation:
         self.__datereparation = value
 
     def get_codeemploye(self):
-        return self.__description
+        return self.__codeemploye
 
     def set_codeemploye(self,value:int):
-        self.__description = value
+        self.__codeemploye = value
+    def __str__(self):
+        return f"le code est de:{self.__code}voici la description{self.__description}\n le montant total est de{self.__montant}.\ndate de reparation{self.__datereparation} par employé numero{self.__codeemploye}"
+
+
+class Voiture():
+    def __init__(self,numeroplaque:str="A1AA1A",marque:str="",modele:str="",couleur:str="",annee:int=0,proprietaire:Client=Client()):
+
+        pass
