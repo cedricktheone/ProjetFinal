@@ -223,9 +223,18 @@ class Garage():
                 raise ValueError("L'auto existe deja")
 
 
-    def get_voiture(self,numvoiture:str)->Voiture:
+    def getvoiture(self,numvoiture:str)->Voiture:
         for element in self.__voitures:
             if element.get_numeroplaque()==numvoiture:
                 return element
         return None
 
+    def ajouterreparation(self,numvoiture:str,reparation:Reparation)->None:
+        if numvoiture in self.get_voitures():
+            self.getvoiture(numvoiture).set_reparations(reparation)
+
+    def getreparation(self,numvoiture:str)->list[Reparation]:
+        for element in self.__voitures:
+            if element.get_numeroplaque()==numvoiture:
+                return element.get_reparation()
+        return None
