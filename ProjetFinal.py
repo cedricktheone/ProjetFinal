@@ -1,4 +1,5 @@
 from datetime import datetime
+from pathlib import Path
 import jsonpickle
 class Personne:
     def __init__(self,nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
@@ -186,5 +187,33 @@ class Garage():
         return self.__voitures
     def set_voitures(self,value:list[Voiture]):
         self.__voitures = value
+    @classmethod
+    def serealisergarage(cls,element:object,fichier:str)->None:
+        #ouvrir le fichier (creer le stream)
+        path:Path=Path(fichier)
+        stream=path.open('w')
+        #serialiser la valeur vers le fichier
+        strjson:str=jsonpickle.encode(element, indent=4,separators=(',',':'))
+        #écrire le string vers le fichier
+        stream.write(strjson)
 
+        #fermer le stream
+        stream.flush()
+        stream.close()
 
+    @classmethod
+    def deserealisergarage(cls,fichier:str)->object:
+        #ouvrir le fichier (creer le stream)
+        path:Path=Path(fichier)
+        stream=path.open('r')
+        #deserialiser le fichier vers un objet etudiant
+        strjson=stream.read()
+        #réséaliser la chaine vers un objet
+        reponse:object=jsonpickle.decode(strjson)
+
+        #fermer le stream
+        stream.close()
+        #retourner le resultat
+        return reponse
+    def ajout_vouture(self,element:Voiture)->None:
+        pass
