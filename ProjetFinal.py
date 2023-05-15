@@ -30,7 +30,7 @@ class Employe(Personne):
     def __init__(self,code:int=0,fonction:str="",nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
         self.set_code(code)
         self.set_fonction(fonction)
-        super.__init__(nom,prenom)
+        super(Employe, self).__init__(nom,prenom)
 
     def get_code(self):
         return self.__code
@@ -42,13 +42,15 @@ class Employe(Personne):
     def set_fonction(self,value:str):
         self.__fonction = value
     def __str__(self):
-        return f"voici la fonction de{self.get_prenom()}{self.get_nom()}:code{self.__code}fonction:{self.__fonction}"
+        return f"voici la fonction de:code{self.__code}fonction:{self.__fonction}"
 
 class Client(Personne):
+
     def __init__(self,telephone:str="111-111-1111",courriel:str="vide@pasdecourriel.com",nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
         self.set_telephone(telephone)
         self.set_courriel(courriel)
-        super.__init__(nom,prenom)
+        super(Client, self).__init__(nom,prenom)
+
     def get_telephone(self):
         return self.__telephone
 
@@ -61,7 +63,7 @@ class Client(Personne):
     def set_courriel(self,value:str):
         self.__courriel = value
     def __str__(self):
-        return f"voici les informations de{self.get_prenom()}{self.get_nom()}:code{self.__telephone}fonction:{self.__courriel}"
+        return f"voici les informations de:code{self.__telephone}fonction:{self.__courriel}"
 
 
 class Reparation:
@@ -104,7 +106,7 @@ class Reparation:
         return f"le code est de:{self.__code}voici la description{self.__description}\n le montant total est de{self.__montant}.\ndate de reparation{self.__datereparation} par employé numero{self.__codeemploye}"
 
 
-class Voiture():
+class Voiture(object):
     def __init__(self,numeroplaque:str="A1AA1A",marque:str="",modele:str="",couleur:str="",annee:int=0,proprietaire:Client=Client(),reparations:list[Reparation]=[]):
         self.set_numeroplaque(numeroplaque)
         self.set_marque(marque)
