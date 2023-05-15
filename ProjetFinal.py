@@ -1,16 +1,28 @@
-# This is a sample Python script.
+class Personne:
+    def __init__(self,nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
+        self.set_nom(nom)
+        self.set_prenom(prenom)
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def get_nom(self):
+        return self.__nom
 
+    def set_nom(self,value):
+        if value[0].isupper() and 6 < len(value) < 20:
+            self.__nom = value
+        else:
+            raise ValueError("la valeur doit commencer par une majuscule et avoir entre 6 et 20 charactères")
+    def get_prenom(self):
+        return self.__prenom
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    def set_prenom(self,value):
+        if value[0].isupper() and 6 < len(value) < 20:
+            self.__prenom = value
+        else:
+            raise ValueError("la valeur doit commencer par une majuscule et avoir entre 6 et 20 charactères")
 
+    def __str__(self):
+        return f"son nom:{self.__nom},son prenom:{self.__prenom}"
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+class Employe(Personne):
+        def __init__(self,code:int=0,fonction:str=""):
+            super.__init__()
