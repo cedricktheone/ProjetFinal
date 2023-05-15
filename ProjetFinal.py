@@ -105,5 +105,42 @@ class Reparation:
 
 class Voiture():
     def __init__(self,numeroplaque:str="A1AA1A",marque:str="",modele:str="",couleur:str="",annee:int=0,proprietaire:Client=Client()):
+        self.set_numeroplaque(numeroplaque)
+        self.set_marque(marque)
+        self.set_modele(modele)
+        self.set_couleur(couleur)
+        self.set_annee(annee)
+        self.set_proprietaire(proprietaire)
 
-        pass
+    def get_numeroplaque(self):
+        return self.__numeroplaque
+    def set_numeroplaque(self,value):
+        self.__numeroplaque = value
+
+    def get_marque(self):
+        return self.__marque
+    def set_marque(self,value):
+        self.__marque = value
+
+    def get_modele(self):
+        return self.__numeroplaque
+    def set_modele(self,value):
+        self.__modele = value
+
+    def get_couleur(self):
+        return self.__couleur
+    def set_couleur(self,value):
+        self.__couleur = value
+
+    def get_annee(self):
+        return self.__annee
+    def set_annee(self,value):
+        self.__annee = value
+
+    def get_proprietaire(self):
+        return self.__proprietaire
+    def set_proprietaire(self,value):
+        self.__proprietaire = value
+
+    def __str__(self):
+        return f"information sur la voiture:{self.__numeroplaque}\n{self.__modele}{self.__modele}\n{self.__couleur}\n{self.__proprietaire}{self.__annee}"
