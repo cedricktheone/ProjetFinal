@@ -528,6 +528,24 @@ class ProjetFinalUI:
         self.Button7.configure(pady="0")
         self.Button7.configure(text='''supprimer''')
         self.Entry21 = tk.Entry(self.TNotebook1_t4)
+
+
+        #ajout du treeview
+        self.Treev = ttk.Treeview(master=self.TNotebook1_t4, columns=(1, 2, 3, 4, 5), show='headings')
+        self.Treev.heading(column=1, text="Code Réparation")
+        self.Treev.heading(column=2, text="Description")
+        self.Treev.heading(column=3, text="Intervenant")
+        self.Treev.heading(column=4, text="Date")
+        self.Treev.heading(column=5, text="Montant")
+
+        self.Treev.column(1, width=80, anchor="e")
+        self.Treev.column(1, width=80, anchor="e")
+        self.Treev.column(1, width=80, anchor="e")
+        self.Treev.column(1, width=80, anchor="e")
+        self.Treev.pack(side="left", padx=10)
+
+
+
         self.Entry21.place(relx=0.293, rely=0.22, height=40, relwidth=0.317)
         self.Entry21.configure(background="white")
         self.Entry21.configure(disabledforeground="#a3a3a3")
