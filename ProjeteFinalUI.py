@@ -60,7 +60,7 @@ class ProjetFinalUI:
         top.minsize(120, 1)
         top.maxsize(3844, 1061)
         top.resizable(1,  1)
-        top.title("Toplevel 0")
+        top.title("Projet Final python")
         top.configure(background="#d9d9d9")
 
         self.top = top
@@ -531,18 +531,19 @@ class ProjetFinalUI:
 
 
         #ajout du treeview
-        self.Treev = ttk.Treeview(master=self.TNotebook1_t4, columns=(1, 2, 3, 4, 5), show='headings')
+        self.Treev = ttk.Treeview(master=self.TNotebook1_t4,columns=(1, 2, 3, 4, 5), show='headings')
         self.Treev.heading(column=1, text="Code Réparation")
         self.Treev.heading(column=2, text="Description")
         self.Treev.heading(column=3, text="Intervenant")
         self.Treev.heading(column=4, text="Date")
         self.Treev.heading(column=5, text="Montant")
 
-        self.Treev.column(1, width=80, anchor="e")
-        self.Treev.column(1, width=80, anchor="e")
-        self.Treev.column(1, width=80, anchor="e")
-        self.Treev.column(1, width=80, anchor="e")
-        self.Treev.pack(side="left", padx=10)
+        self.Treev.column(1, width=100, anchor="e")
+        self.Treev.column(2, width=100, anchor="e")
+        self.Treev.column(3, width=100, anchor="e")
+        self.Treev.column(4, width=100, anchor="e")
+        self.Treev.column(5, width=100, anchor="e")
+        self.Treev.pack(side="left", padx=3, pady=150)
 
 
 
@@ -589,12 +590,12 @@ class ProjetFinalUI:
         top.configure(menu = self.menubar)
 
 def start_up():
-    root.main()
-
-if __name__ == '__main__':
     root=tk.Tk()
     projetfinalui:ProjetFinalUI=ProjetFinalUI(root)
     root.mainloop()
+
+if __name__ == '__main__':
+    start_up()
 
 
 
