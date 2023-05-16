@@ -589,13 +589,13 @@ class ProjetFinalUI:
         self.menubar = tk.Menu(top,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
         top.configure(menu = self.menubar)
 
-def start_up():
+
+
+
+if __name__ == '__main__':
     root=tk.Tk()
     projetfinalui:ProjetFinalUI=ProjetFinalUI(root)
     root.mainloop()
-
-if __name__ == '__main__':
-    start_up()
 
 
 
