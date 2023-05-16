@@ -1,6 +1,7 @@
 from datetime import datetime
 from pathlib import Path
 import jsonpickle
+
 class Personne:
     def __init__(self,nom:str="Aaaaaaa",prenom:str="Aaaaaaa"):
         self.set_nom(nom)
